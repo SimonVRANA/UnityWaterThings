@@ -105,13 +105,13 @@ public class InfiniteParallax : MonoBehaviour
 	{
 		foreach (InfiniteParallaxItem obj in frontItems)
 		{
-			frontItems.Remove(obj);
 			Destroy(obj);
 		}
+		frontItems.Clear();
 		foreach (InfiniteParallaxItem obj in backItems)
 		{
-			frontItems.Remove(obj);
 			Destroy(obj);
 		}
+		backItems.Clear();
 	}
 }
