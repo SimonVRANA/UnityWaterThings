@@ -42,17 +42,17 @@ public class InfiniteParallax : MonoBehaviour
 		{
 			InfiniteParallaxItem item = Instantiate(underwaterInfiniteParallaxParameters.FrontPrefab);
 			frontItems.Add(item);
-			PositionItem(item, false);
+			InitializeItemPosition(item);
 		}
 		for (int i = 0; i < underwaterInfiniteParallaxParameters.NumberOfBackItems; i++)
 		{
 			InfiniteParallaxItem item = Instantiate(underwaterInfiniteParallaxParameters.BackPrefab);
 			backItems.Add(item);
-			PositionItem(item, false);
+			InitializeItemPosition(item);
 		}
 	}
 
-	private InfiniteParallaxItem PositionItem(InfiniteParallaxItem item, bool atScreenBordes = true)
+	private void InitializeItemPosition(InfiniteParallaxItem item)
 	{
 		item.transform.parent = transform;
 
@@ -63,34 +63,41 @@ public class InfiniteParallax : MonoBehaviour
 		float horizontalMaxRange = cameraTransform.position.x + halfScreenWidth + itemSize;
 		float verticalMinRange = cameraTransform.position.y - halfScreenHeight - itemSize;
 		float verticalMaxRange = cameraTransform.position.y + halfScreenHeight + itemSize;
-		if (atScreenBordes)
-		{
-			float screenSide = UnityEngine.Random.Range(0.0f, 1.0f);
-			if (screenSide < 0.5f)
-			{
-				item.transform.position = new(screenSide < 0.25f ? horizontalMinRange : horizontalMaxRange,
-											  UnityEngine.Random.Range(verticalMinRange, verticalMaxRange),
-											  item.transform.position.z);
-			}
-			else
-			{
-				item.transform.position = new(UnityEngine.Random.Range(horizontalMinRange, horizontalMaxRange),
-											 screenSide < 0.75f ? verticalMinRange : verticalMaxRange,
-											 item.transform.position.z);
-			}
-		}
-		else
-		{
-			item.transform.position = new(UnityEngine.Random.Range(horizontalMinRange, horizontalMaxRange),
-										  UnityEngine.Random.Range(verticalMinRange, verticalMaxRange),
-										  item.transform.position.z);
-		}
+
+		item.transform.position = new(UnityEngine.Random.Range(horizontalMinRange, horizontalMaxRange),
+									  UnityEngine.Random.Range(verticalMinRange, verticalMaxRange),
+									  item.transform.position.z);
 
 		item.RandomizeFollowCameraSpeed();
 
 		item.onWentOutOfScreen += OnItemWentOutOfScreen;
+	}
 
-		return item;
+	private void PositionItem(InfiniteParallaxItem item)
+	{
+		float itemSize = item.MinimumSize + UnityEngine.Random.Range(0.0f, 1.0f) * (item.MaximumSize - item.MinimumSize);
+		item.transform.localScale = new Vector3(itemSize, itemSize, itemSize);
+
+		float horizontalMinRange = cameraTransform.position.x - halfScreenWidth - itemSize;
+		float horizontalMaxRange = cameraTransform.position.x + halfScreenWidth + itemSize;
+		float verticalMinRange = cameraTransform.position.y - halfScreenHeight - itemSize;
+		float verticalMaxRange = cameraTransform.position.y + halfScreenHeight + itemSize;
+
+		float screenSide = UnityEngine.Random.Range(0.0f, 1.0f);
+		if (screenSide < 0.5f)
+		{
+			item.transform.position = new(screenSide < 0.25f ? horizontalMinRange : horizontalMaxRange,
+										  UnityEngine.Random.Range(verticalMinRange, verticalMaxRange),
+										  item.transform.position.z);
+		}
+		else
+		{
+			item.transform.position = new(UnityEngine.Random.Range(horizontalMinRange, horizontalMaxRange),
+										 screenSide < 0.75f ? verticalMinRange : verticalMaxRange,
+										 item.transform.position.z);
+		}
+
+		item.RandomizeFollowCameraSpeed();
 	}
 
 	public void OnItemWentOutOfScreen(object sender, EventArgs arguments)
