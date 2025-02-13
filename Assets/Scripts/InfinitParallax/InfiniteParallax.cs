@@ -13,7 +13,7 @@ public class InfiniteParallax : MonoBehaviour
 	public static float halfScreenHeight = 5;
 
 	[SerializeField]
-	private InfiniteParallaxParameters underwaterInfiniteParallaxParameters;
+	private InfiniteParallaxSettings underwaterInfiniteParallaxParameters;
 
 	private Transform cameraTransform;
 

@@ -3,8 +3,8 @@
 
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "InfinitParrallaxParametters", menuName = "Scriptable Objects/Infinite Parallax/Infinite Parallax Parameters")]
-public class InfiniteParallaxParameters : ScriptableObject
+[CreateAssetMenu(fileName = "InfiniteParallaxSettings", menuName = "Scriptable Objects/Infinite Parallax Settings")]
+public class InfiniteParallaxSettings : ScriptableObject
 {
 	[Header("Front")]
 	[SerializeField]
