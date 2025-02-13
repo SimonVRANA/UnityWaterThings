@@ -35,7 +35,7 @@ public class SpeedParticles : MonoBehaviour
 			Vector3 movementDirection = transform.position - previousPosition;
 			float angle = Vector3.SignedAngle(movementDirection, Vector3.right, Vector3.forward);
 			ParticleSystem.ShapeModule shapeModule = particleSystemComponent.shape;
-			shapeModule.rotation = new Vector3(0.0f, 0.0f, angle - (shapeModule.arc / 2));
+			shapeModule.rotation = new Vector3(angle, 0.0f, 0.0f);
 		}
 
 		previousPosition = transform.position;

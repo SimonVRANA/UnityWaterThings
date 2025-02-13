@@ -131,6 +131,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SelfPropelledThingJoint
       objectReference: {fileID: 0}
+    - target: {fileID: 5837870086210825142, guid: 7bc323565e84c154b86bfc908ff2a0e9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6923331877252907997, guid: 7bc323565e84c154b86bfc908ff2a0e9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -171,6 +175,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8871603731818806964, guid: 7bc323565e84c154b86bfc908ff2a0e9, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -197,8 +205,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flickCooldown: 2
-  maxXForce: 100
-  maxYForce: 100
+  maxXForce: 50
+  maxYForce: 50
 --- !u!4 &257994426 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6923331877252907997, guid: 7bc323565e84c154b86bfc908ff2a0e9, type: 3}
