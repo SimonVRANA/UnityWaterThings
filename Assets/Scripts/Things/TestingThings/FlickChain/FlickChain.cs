@@ -8,13 +8,19 @@ public class FlickChain : MonoBehaviour
 {
 	[Header("Flick")]
 	[SerializeField]
-	private float flickCooldown = 2f;
+	private float flickCooldown = 5f;
 
 	[SerializeField]
-	private float maxXForce = 1.0f;
+	private float minXForce = 100.0f;
 
 	[SerializeField]
-	private float maxYForce = 1.0f;
+	private float maxXForce = 200.0f;
+
+	[SerializeField]
+	private float minYForce = 100.0f;
+
+	[SerializeField]
+	private float maxYForce = 200.0f;
 
 	[Header("Links")]
 	[SerializeField]
@@ -137,7 +143,13 @@ public class FlickChain : MonoBehaviour
 		else
 		{
 			timeBeforeNextFlick = flickCooldown;
-			joint1.AddForce(new Vector2(Random.Range(-maxXForce, maxXForce), Random.Range(-maxYForce, maxYForce)));
+
+			// Generate random positive or negative force for x and y
+			float x = (minXForce + Random.Range(0f, 1f) * (maxXForce - minXForce)) * (Random.value > 0.5f ? 1 : -1);
+			float y = (minYForce + Random.Range(0f, 1f) * (maxYForce - minYForce)) * (Random.value > 0.5f ? 1 : -1);
+
+			// Apply the calculated forces to joint1
+			joint1.AddForce(new Vector2(x, y));
 		}
 
 		bone1.Update();

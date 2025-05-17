@@ -11,16 +11,16 @@ public class FlickStick : MonoBehaviour
 	private float flickCooldown = 5f;
 
 	[SerializeField]
-	private float minXForce = 1000.0f;
+	private float minXForce = 100.0f;
 
 	[SerializeField]
-	private float maxXForce = 2000.0f;
+	private float maxXForce = 200.0f;
 
 	[SerializeField]
-	private float minYForce = 1000.0f;
+	private float minYForce = 100.0f;
 
 	[SerializeField]
-	private float maxYForce = 2000.0f;
+	private float maxYForce = 200.0f;
 
 	[Header("Links")]
 	[SerializeField]
