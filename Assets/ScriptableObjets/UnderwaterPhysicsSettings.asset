@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c08eaf4cbca418419468616c715df1c, type: 3}
   m_Name: UnderwaterPhysicsSettings
   m_EditorClassIdentifier: 
-  friction: 0.01
+  friction: 1.5
