@@ -9917,9 +9917,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2f2630aac6da714f9d0329baa0098ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flickCooldown: 2
-  maxXForce: 1
-  maxYForce: 1
+  flickCooldown: 5
+  minXForce: 100
+  maxXForce: 200
+  minYForce: 100
+  maxYForce: 200
   jointVisual1: {fileID: 3515184794285649275}
   jointVisual2: {fileID: 267809396121259893}
   boneVisualizer: {fileID: 2610560635467248838}

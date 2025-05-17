@@ -15,6 +15,9 @@ public class ThingJoint
 	private Vector2 velocity;
 	public Vector2 Velocity => velocity;
 
+	private Vector2 forces;
+	public Vector2 Forces => forces;
+
 	public ThingJoint(Vector2 position)
 	{
 		this.position = position;
@@ -22,22 +25,26 @@ public class ThingJoint
 
 	public void AddForce(Vector2 force)
 	{
-		velocity += force;
+		forces += force;
 	}
 
 	public void Update(float deltaTime)
 	{
-		position += velocity * deltaTime;
-
 		// Apply friction as a force opposing velocity
 		Vector2 frictionForce = -velocity.normalized * physicsSettingsService.PhysicsSettings.Friction;
-		velocity += frictionForce * deltaTime;
+		forces += frictionForce;
+
+		velocity += forces * deltaTime;
+
+		position += velocity * deltaTime;
 
 		// Prevent velocity from oscillating around zero
 		if (velocity.magnitude < 0.01f)
 		{
 			velocity = Vector2.zero;
 		}
+
+		forces = Vector2.zero;
 	}
 
 	public void ForcePosition(Vector2 position)

@@ -8,13 +8,19 @@ public class FlickStick : MonoBehaviour
 {
 	[Header("Flick")]
 	[SerializeField]
-	private float flickCooldown = 2f;
+	private float flickCooldown = 5f;
 
 	[SerializeField]
-	private float maxXForce = 10.0f;
+	private float minXForce = 1000.0f;
 
 	[SerializeField]
-	private float maxYForce = 10.0f;
+	private float maxXForce = 2000.0f;
+
+	[SerializeField]
+	private float minYForce = 1000.0f;
+
+	[SerializeField]
+	private float maxYForce = 2000.0f;
 
 	[Header("Links")]
 	[SerializeField]
@@ -36,7 +42,7 @@ public class FlickStick : MonoBehaviour
 	private void Start()
 	{
 		joint1 = new ThingJoint(transform.position);
-		joint2 = new ThingJoint(transform.position + new Vector3(0, -1, 0));
+		joint2 = new ThingJoint(transform.position + new Vector3(0, -1f, 0));
 		bone = new ThingBone(joint1, joint2);
 
 		boneVisualizer.Joint1 = joint1;
@@ -69,7 +75,13 @@ public class FlickStick : MonoBehaviour
 		else
 		{
 			timeBeforeNextFlick = flickCooldown;
-			joint1.AddForce(new Vector2(Random.Range(-maxXForce, maxXForce), Random.Range(-maxYForce, maxYForce)));
+
+			// Generate random positive or negative force for x and y
+			float x = (minXForce + Random.Range(0f, 1f) * (maxXForce - minXForce)) * (Random.value > 0.5f ? 1 : -1);
+			float y = (minYForce + Random.Range(0f, 1f) * (maxYForce - minYForce)) * (Random.value > 0.5f ? 1 : -1);
+
+			// Apply the calculated forces to joint1
+			joint1.AddForce(new Vector2(x, y));
 		}
 
 		bone.Update();
