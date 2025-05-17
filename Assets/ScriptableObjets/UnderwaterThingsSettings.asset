@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c08eaf4cbca418419468616c715df1c, type: 3}
-  m_Name: UnderwaterPhysicsSettings
+  m_Script: {fileID: 11500000, guid: 4d13b62a3c3b85b4496ae0a949fe556b, type: 3}
+  m_Name: UnderwaterThingsSettings
   m_EditorClassIdentifier: 
-  friction: 0.01
+  boneLength: 1
+  boneElasticity: 50

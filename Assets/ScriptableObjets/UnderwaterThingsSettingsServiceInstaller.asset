@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c08eaf4cbca418419468616c715df1c, type: 3}
-  m_Name: UnderwaterPhysicsSettings
+  m_Script: {fileID: 11500000, guid: e2a954434293a204db83588f644fafe5, type: 3}
+  m_Name: UnderwaterThingsSettingsServiceInstaller
   m_EditorClassIdentifier: 
-  friction: 0.01
+  thingsSettings: {fileID: 11400000, guid: 3a05e1357766a794c9500aba5faf7930, type: 2}
